@@ -1,34 +1,23 @@
-const express = require('express')
+const http = require("http");
 
-const server = express()
+const server = http.createServer((request, response) => {
+    // response.writeHead(200, "response success", { Header: { "content-type": "text/html" } })
+    // response.write("<p> Hello From node server </p>")
 
+    response.writeHead(200, "response success", {
+        Header: { "content-type": "application/json" },
+    });
+
+    const data = [
+        { id: 1, name: "Lamiaa", age: 29 },
+        { id: 2, name: "Ahmed", age: 29 },
+    ];
+    
+    response.write(JSON.stringify(data));
+    response.end()
+});
+
+// Listen
 server.listen(8080, () => {
-    console.log("I'm listening express 👻")
-})
-
-
-//1. First MW => login and log method and url 
-server.use((req, res, next) => {
-    console.log(req.method, req.url)
-    // res.status(200).json({ message: 'Hello from MW 01' })
-    next()
-})
-
-//2. Second MW => authenticated MW
-server.use((req, res, next) => {
-    console.log("authenticated MW 02 ")
-    next(new Error('Not authenticated'))
-})
-
-//3. Third MW => Not-Found MW
-server.use((req, res, next) => {
-    res.status(404).json({ message: 'Not Found MW 03' })
-})
-
-//4. Fourth => Error MW
-server.use((error, req, res, next) => {
-    // A. Develop Time
-    res.status(500).json({ message: 'Error MW 04: ' + error })
-    // A. Production Time
-    // res.status(500).json({ message: 'Internal Server Error' })
-})
+    console.log("server listening ....👻");
+});

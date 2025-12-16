@@ -1,1 +1,0 @@
-// Schema for every entity in DB
