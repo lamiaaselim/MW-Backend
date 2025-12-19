@@ -2,20 +2,17 @@
  * Treat With Controller
  */
 const express = require('express')
+const controller = require('./../controllers/department.controller')
 const router = express.Router()
 
 router.route('/department')
-    .get((req, res, next) => {
-        res.status(200).json({ data: [{ id: 1, name: "OOP" }, { id: 2, name: "OS" }] })
-    })
-    .post((req, res, next) => {
-        res.status(200).json({ data: "Department Added" })
-    })
-    .patch((req, res, next) => {
-        res.status(200).json({ data: "Department Updated" })
-    })
-    .delete((req, res, next) => {
-        res.status(200).json({ data: "Department Deleted" })
-    })
+    .get(controller.getAllDepartments)
+    .post(controller.createDepartment)
+    .patch(controller.updateDepartment)
+
+router.route('/department/:id')
+    .get(controller.getOneDepartment)
+    .delete(controller.deleteDepartment)
+
 
 module.exports = router;

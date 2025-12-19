@@ -1,13 +1,21 @@
 const express = require("express")
+const mongoose = require("mongoose")
 const studentRouter = require('./routes/student.route')
 const departmentRouter = require('./routes/department.route')
 
 
 const server = express()
 
-server.listen(8000, () => {
-    console.log("Express server listening ....👻");
-})
+
+
+mongoose.connect('mongodb://127.0.0.1:27017/NodeMWProject')
+    .then(() => {
+        console.log('DB Connected Successful');
+        server.listen(8000, () => {
+            console.log("Express server listening ....👻");
+        })
+    })
+    .catch((err) => { console.log(err); })
 
 // 1. First MW => Login => log method and url
 server.use((req, res, next) => {
@@ -16,10 +24,11 @@ server.use((req, res, next) => {
 })
 
 /*****Routes*******/
+server.use(express.json())
 server.use(studentRouter)
 server.use(departmentRouter)
 
-// 3. Third MW => NOT - Found
+// 3. Third MW => NOT - Found Break => 2: 45
 server.use((req, res, next) => {
     res.status(404).json({ message: "Not found MW 03" })
     next()
