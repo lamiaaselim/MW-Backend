@@ -3,12 +3,11 @@
  * DB Schema for every entity in system
 */
 
-import mongoose from 'mongoose';
-
+const mongoose = require('mongoose')
 const departmentSchema = mongoose.Schema({
     _id: Number,
     name: String
 });
 
-// collection name
-mongoose.model('departments', departmentSchema)
+// collection name and default export 
+module.exports = mongoose.model('departments', departmentSchema)

@@ -38,4 +38,4 @@ const studentSchema = mongoose.Schema({
 });
 
 // collection name
-mongoose.model('students', studentSchema)
+module.exports = mongoose.model('students', studentSchema)
