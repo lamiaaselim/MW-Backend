@@ -6,7 +6,8 @@
 const mongoose = require('mongoose')
 const departmentSchema = mongoose.Schema({
     _id: Number,
-    name: String
+    name: String,
+    hidden: Boolean
 });
 
 // collection name and default export 

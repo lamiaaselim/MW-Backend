@@ -4,7 +4,7 @@
 */
 
 
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const addressSchema = mongoose.Schema({
     country: String,
@@ -25,7 +25,10 @@ const studentSchema = mongoose.Schema({
         type: String,
         minLength: [8, "Password must be 8 char at least"]
     },
-    department: Number
+    department: {
+        type: Number,
+        ref: "departments"
+    }
     // phone: {
     //     type: String,
     //     unique: [true, 'phone used before'],

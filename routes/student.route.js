@@ -3,19 +3,15 @@
  */
 const express = require('express')
 const router = express.Router()
-
+const controller = require('./../controllers/student.controller')
 router.route('/student')
-    .get((req, res, next) => {
-        res.status(200).json({ data: [{ id: 1, name: "ali" }, { id: 2, name: "Hossam" }] })
-    })
-    .post((req, res, next) => {
-        res.status(200).json({ data: "Student Added" })
-    })
-    .patch((req, res, next) => {
-        res.status(200).json({ data: "Student Updated" })
-    })
-    .delete((req, res, next) => {
-        res.status(200).json({ data: "Student Deleted" })
-    })
+    .get(controller.getAllStudents)
+    .post(controller.createStudent)
+    .patch(controller.updateStudent)
+
+router.route('/student/:id')
+    .get(controller.getOneStudent)
+    .delete(controller.deleteStudent)
+
 
 module.exports = router;

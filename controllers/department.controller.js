@@ -17,6 +17,7 @@ exports.getAllDepartments = (req, res, next) => {
             next(err)
         })
 }
+// break : 4:30 
 exports.createDepartment = (req, res, next) => {
     // console.log(req.body);
     let newDepart = new DepartmentSchema({
@@ -32,17 +33,29 @@ exports.createDepartment = (req, res, next) => {
         })
 }
 
+exports.updateDepartment = (req, res, next) => {
+    DepartmentSchema.updateOne({ _id: req.body._id }, { $set: { name: req.body.name } })
+        .then((updatedDepart) => {
+            res.status(200).json({ data: "Department Updated", updatedDepart })
+        })
+        .catch((err) => { next(err) })
+}
+
 exports.getOneDepartment = (req, res, next) => {
     // extract parameter
-    console.log(req.params);
-    console.log(req.params.id);
-    res.status(200).json({ data: { id: 1, name: "OOP" } })
+    // console.log(req.params);
+    // console.log(req.params.id);
+    DepartmentSchema.findOne({ _id: req.params.id })
+        .then((depart) => {
+            // check if  depart is exist
+            if (depart == null) {
+                throw new Error('Department not Exist')
+            }
+            res.status(200).json({ data: depart })
+        })
+        .catch((err) => { next(err) })
 }
 
-
-exports.updateDepartment = (req, res, next) => {
-    res.status(200).json({ data: "Department Updated" })
-}
 exports.deleteDepartment = (req, res, next) => {
     res.status(200).json({ data: "Department Deleted" })
 }
