@@ -13,7 +13,7 @@ const addressSchema = mongoose.Schema({
     BuildNo: Number
 })
 
-const departmentSchema = mongoose.Schema({
+const studentSchema = mongoose.Schema({
     _id: Number,
     name: String,
     email: {
@@ -25,16 +25,17 @@ const departmentSchema = mongoose.Schema({
         type: String,
         minLength: [8, "Password must be 8 char at least"]
     },
-    phone: {
-        type: String,
-        unique: [true, 'phone used before'],
-        require: [true, 'phone is required'],
-        validator: function (v) {
-            return /^01[0125]\d{8}/.test(v)
-        }
-    },
-    address: addressSchema
+    department: Number
+    // phone: {
+    //     type: String,
+    //     unique: [true, 'phone used before'],
+    //     require: [true, 'phone is required'],
+    //     validator: function (v) {
+    //         return /^01[0125]\d{8}/.test(v)
+    //     }
+    // },
+    // address: addressSchema
 });
 
 // collection name
-mongoose.model('departments', departmentSchema)
+mongoose.model('students', studentSchema)
