@@ -4,18 +4,18 @@
 const express = require('express')
 const router = express.Router()
 
-router.route('/student')
+router.route('/department')
     .get((req, res, next) => {
-        res.status(200).json({ data: [{ id: 1, name: "ali" }, { id: 2, name: "Hossam" }] })
+        res.status(200).json({ data: [{ id: 1, name: "OOP" }, { id: 2, name: "OS" }] })
     })
     .post((req, res, next) => {
-        res.status(200).json({ data: "Student Added" })
+        res.status(200).json({ data: "Department Added" })
     })
     .patch((req, res, next) => {
-        res.status(200).json({ data: "Student Updated" })
+        res.status(200).json({ data: "Department Updated" })
     })
     .delete((req, res, next) => {
-        res.status(200).json({ data: "Student Deleted" })
+        res.status(200).json({ data: "Department Deleted" })
     })
 
 module.exports = router;

@@ -16,7 +16,7 @@ headers:
         http://localhost:8080/student      get  --> get all students
         http://localhost:8080/student     post --> add student   --> body 
         http://localhost:8080/student     patch --> upadte Student --> body
-         http://localhost:8080/student     delete -->delete Student --> body
+        http://localhost:8080/student     delete -->delete Student --> body
         http://localhost:8080/department  get --> get lalll departments
 
 

@@ -4,6 +4,13 @@ const server = http.createServer((request, response) => {
     // response.writeHead(200, "response success", { Header: { "content-type": "text/html" } })
     // response.write("<p> Hello From node server </p>")
 
+
+    if (request.url === '/student' && request.method === "GET") {
+        // get all students
+    } else if (request.url === '/student' && request.method === "POST") {
+        //  Create students
+    }
+
     response.writeHead(200, "response success", {
         Header: { "content-type": "application/json" },
     });
@@ -12,7 +19,7 @@ const server = http.createServer((request, response) => {
         { id: 1, name: "Lamiaa", age: 29 },
         { id: 2, name: "Ahmed", age: 29 },
     ];
-    
+
     response.write(JSON.stringify(data));
     response.end()
 });
