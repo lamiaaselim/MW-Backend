@@ -4,9 +4,11 @@
 const express = require('express')
 const router = express.Router()
 const controller = require('./../controllers/student.controller')
+const { protect, admin } = require('./../middlewares/auth.middleware')
+
 router.route('/api/student')
-    .get(controller.getAllStudents)
-    .post(controller.createStudent)
+    .get(protect, controller.getAllStudents)
+    .post(protect, admin, controller.createStudent)
     .patch(controller.updateStudent)
 
 router.route('/api/student/:id')

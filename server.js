@@ -3,6 +3,9 @@ const dotenv = require("dotenv")
 const morgan = require('morgan')
 const studentRouter = require('./routes/student.route')
 const departmentRouter = require('./routes/department.route')
+const userRouter = require('./routes/auth.route')
+const NotFoundMiddleware = require('./middlewares/not-found.middleware')
+const ErrorMiddleware = require('./middlewares/error.middleware')
 const connectDB = require('./config/db.config')
 dotenv.config()
 const server = express()
@@ -22,6 +25,7 @@ server.use(morgan('dev'))
 /*****Routes*******/
 server.set('view engine', 'pug')
 
+server.use(userRouter)
 server.use(studentRouter)
 server.use(departmentRouter)
 
@@ -31,16 +35,10 @@ server.get('/', (req, res) => {
 
 
 // 3. Third MW => NOT - Found Break => 2: 45
-server.use((req, res, next) => {
-    res.status(404).json({ message: "Not found MW 03" })
-    next()
-})
+server.use(NotFoundMiddleware.handler);
 
 // 4. Forth => Error MW04
-server.use((error, req, res, next) => {
-    res.status(500).json({ message: "Error MW04 " + error })
-    // res.status(500).json({message: "Internal server Error"})
-})
+server.use(ErrorMiddleware.handler);
 
 
 // Start the server   

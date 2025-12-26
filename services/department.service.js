@@ -1,5 +1,6 @@
 const DepartmentSchema = require("./../models/department.model");
 
+// Break: 5:00
 class DepartmentService {
     static async getAll() {
         return await DepartmentSchema.find({});
@@ -19,22 +20,22 @@ class DepartmentService {
         );
     }
     static async getById(id) {
-       const instance = await DepartmentSchema.findOne({ _id: id });
-       if (!instance) {
-           const error = new Error("Department Not Exist");
-           error.status = 404;
-           throw error;
-       }
-       return instance;
+        const instance = await DepartmentSchema.findOne({ _id: id });
+        if (!instance) {
+            const error = new Error("Department Not Exist");
+            error.status = 404;
+            throw error;
+        }
+        return instance;
     }
     static async deleteById(id) {
-       const instance = await DepartmentSchema.findOne({ _id: id });
-       if (!instance) {
-           const error = new Error("Department Not Exist");
-           error.status = 404;
-           throw error;
-       }
-       return instance;
+        const instance = await DepartmentSchema.findOne({ _id: id });
+        if (!instance) {
+            const error = new Error("Department Not Exist");
+            error.status = 404;
+            throw error;
+        }
+        return instance;
     }
 }
 
