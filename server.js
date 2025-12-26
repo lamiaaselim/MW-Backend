@@ -10,7 +10,9 @@ const connectDB = require('./config/db.config')
 dotenv.config()
 const server = express()
 
-// Connect to DataBase
+// search packages rate limit, helmet, cors, xss-clean, compression
+// Connect to DataBase 
+
 connectDB();
 
 // Built-in MW to handle JSON data
@@ -33,13 +35,11 @@ server.get('/', (req, res) => {
     res.render('index', { title: 'Hey', message: 'Hello there!' })
 })
 
-
 // 3. Third MW => NOT - Found Break => 2: 45
 server.use(NotFoundMiddleware.handler);
 
 // 4. Forth => Error MW04
 server.use(ErrorMiddleware.handler);
-
 
 // Start the server   
 const PORT = process.env.PORT || 8000
