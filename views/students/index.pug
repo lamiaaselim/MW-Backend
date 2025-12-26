@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title= title
+    script(src="https://cdn.tailwindcss.com")
+  body.bg-slate-900.min-h-screen.p-6
+
+    h1.text-2xl.font-bold.text-center.text-white.mb-8 Student Management System
+
+    include ./_student-card.pug
+
+    .max-w-7xl.mx-auto
+      div(class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6")
+        each student in students
+          +studentCard(student)

@@ -1,7 +1,7 @@
 
 // Node JS
-1- web appliaction responde html pages
-2- api  reposnde with data
+1- web appliaction responde html pages => template engines => pug 
+2- api  reposnd with json data
 
 
 
@@ -51,6 +51,16 @@ Model Folder : js files hold schema for each collection
 Controller Folder:   crud operations
             js files apply crud operations on collection
 
-Routes :  requset data endpoints 
+Routes || Views :  request data endpoints 
             js files route for ech collection
 
+MVCs :
+Model Folder : js files hold schema for each collection
+
+Service: Treat with DB
+
+Controller Folder: crud operations
+            js files apply crud operations on collection
+
+Routes || Views :  request data endpoints 
+            js files route for ech collection

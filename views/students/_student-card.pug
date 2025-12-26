@@ -1,0 +1,30 @@
+mixin studentCard(student)
+  .bg-slate-800.text-white.rounded-xl.shadow-lg.overflow-hidden.flex.flex-col
+
+    // Top section
+    .p-6.text-center
+      // Avatar (generated initials instead of photo)
+      .w-20.h-20.mx-auto.rounded-full.bg-pink-500.flex.items-center.justify-center.text-2xl.font-bold.mb-4
+        = student.name.charAt(0).toUpperCase()
+
+      h3.text-lg.font-semibold #{student.name}
+      if student.department
+        p.text-sm.text-slate-300 #{student.department.name}
+      else
+        p.text-sm.text-slate-400 No Department
+
+    // Info section
+    .bg-slate-700.p-4.text-sm.space-y-2
+      p
+        span.font-semibold ID:
+        |  #{student._id}
+      p
+        span.font-semibold Email:
+        |  #{student.email}
+
+    // Action
+    .mt-auto.p-4.text-center.bg-slate-900
+      a(
+        href=`/view/student/${student._id}`
+        class="text-blue-400 hover:underline"
+      ) View Details

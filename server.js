@@ -20,8 +20,15 @@ server.use(morgan('dev'))
 
 
 /*****Routes*******/
+server.set('view engine', 'pug')
+
 server.use(studentRouter)
 server.use(departmentRouter)
+
+server.get('/', (req, res) => {
+    res.render('index', { title: 'Hey', message: 'Hello there!' })
+})
+
 
 // 3. Third MW => NOT - Found Break => 2: 45
 server.use((req, res, next) => {

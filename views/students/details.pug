@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title= title
+    script(src="https://cdn.tailwindcss.com")
+  body.bg-gray-100.min-h-screen.p-6
+
+    .max-w-xl.mx-auto.mb-6.flex.justify-between.items-center
+      h1.text-2xl.font-bold Student Details
+      a(
+        href="/view/student"
+        class="text-blue-600 hover:underline"
+      ) ← Back
+
+    .max-w-xl.mx-auto.bg-white.rounded-lg.shadow.p-6
+      .space-y-4
+        div
+          span.text-gray-500.text-sm Student ID
+          p.text-lg.font-semibold #{student._id}
+
+        div
+          span.text-gray-500.text-sm Name
+          p.text-lg.font-semibold #{student.name}
+
+        div
+          span.text-gray-500.text-sm Email
+          p.text-lg.font-semibold #{student.email}
+
+        div
+          span.text-gray-500.text-sm Department
+          if student.department
+            p.text-lg.font-semibold #{student.department.name}
+          else
+            p.text-gray-400 Not Assigned
